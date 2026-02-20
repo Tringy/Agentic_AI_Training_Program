@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: url-shortener-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_PATH=/data
+      - BASE_URL=http://localhost:8000
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - db_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - url-shortener-network
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: url-shortener-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - PORT=3000
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - url-shortener-network
+    restart: on-failure
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  url-shortener-network:
+    driver: bridge

@@ -1,0 +1,32 @@
+# Frontend Fly app configuration
+app = "tringo-ai-lab01-url-shortener-web"
+primary_region = "iad"
+
+[build]
+dockerfile = "Dockerfile"
+
+[env]
+NEXT_PUBLIC_API_URL = "https://tringo-ai-lab01-url-shortener-api.fly.dev"
+
+[[services]]
+internal_port = 3000
+processes = ["app"]
+protocol = "tcp"
+
+[http_service]
+internal_port = 3000
+
+[[http_service.checks]]
+grace_period = "5s"
+interval = "30s"
+method = "GET"
+path = "/"
+protocol = "http"
+timeout = "10s"
+type = "http"
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
+  min_machines_running = 1
