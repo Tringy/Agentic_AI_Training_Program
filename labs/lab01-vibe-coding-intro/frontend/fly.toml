@@ -30,4 +30,3 @@ type = "http"
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 256
-  min_machines_running = 1
