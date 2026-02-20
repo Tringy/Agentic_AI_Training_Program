@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "category": "fabricated_api",
+    "query": "How do I use the built-in reverseArray() function in JavaScript?",
+    "hallucinated_response": "You can use the built-in reverseArray() function like this: arr.reverseArray()",
+    "correct_response": "JavaScript doesn't have a reverseArray() function. Use array.reverse() method instead.",
+    "severity": "medium",
+    "explanation": "The model invented a non-existent API. The correct method is .reverse()"
+  },
+  {
+    "id": 2,
+    "category": "false_documentation",
+    "query": "What parameters does Python's sorted() function accept?",
+    "hallucinated_response": "sorted() accepts: iterable, key, reverse, and compare parameters",
+    "correct_response": "sorted() accepts: iterable, key, and reverse. There is no 'compare' parameter in Python 3.",
+    "severity": "medium",
+    "explanation": "The 'compare' parameter existed in Python 2 but was removed in Python 3"
+  },
+  {
+    "id": 3,
+    "category": "invented_library",
+    "query": "How do I use the 'quickhttp' library in Python?",
+    "hallucinated_response": "Import it with 'import quickhttp' and use quickhttp.get(url)",
+    "correct_response": "There is no standard 'quickhttp' library. You might be thinking of 'requests' or 'httpx'.",
+    "severity": "high",
+    "explanation": "Model invented a non-existent library name"
+  },
+  {
+    "id": 4,
+    "category": "false_syntax",
+    "query": "How do I create a constant in JavaScript?",
+    "hallucinated_response": "Use the 'constant' keyword: constant x = 5",
+    "correct_response": "Use the 'const' keyword: const x = 5",
+    "severity": "high",
+    "explanation": "JavaScript uses 'const', not 'constant'"
+  },
+  {
+    "id": 5,
+    "category": "fabricated_feature",
+    "query": "How do I use React's built-in useState async option?",
+    "hallucinated_response": "Pass {async: true} as second parameter: useState(0, {async: true})",
+    "correct_response": "useState doesn't have an async option. It's synchronous. Use useEffect for async operations.",
+    "severity": "high",
+    "explanation": "This feature doesn't exist in React"
+  },
+  {
+    "id": 6,
+    "category": "wrong_defaults",
+    "query": "What is the default timeout for fetch() in JavaScript?",
+    "hallucinated_response": "The default timeout is 30 seconds",
+    "correct_response": "fetch() has no default timeout. It will wait indefinitely unless you implement your own timeout.",
+    "severity": "medium",
+    "explanation": "fetch() doesn't have a built-in timeout mechanism"
+  },
+  {
+    "id": 7,
+    "category": "false_version_info",
+    "query": "When was async/await added to Python?",
+    "hallucinated_response": "Async/await was added in Python 2.7",
+    "correct_response": "Async/await was added in Python 3.5 (2015)",
+    "severity": "low",
+    "explanation": "Incorrect version information"
+  },
+  {
+    "id": 8,
+    "category": "invented_method",
+    "query": "How do I use the .removeAll() method on arrays in JavaScript?",
+    "hallucinated_response": "Use arr.removeAll(item) to remove all occurrences",
+    "correct_response": "JavaScript arrays don't have a removeAll() method. Use filter(): arr = arr.filter(x => x !== item)",
+    "severity": "medium",
+    "explanation": "This method doesn't exist in JavaScript"
+  },
+  {
+    "id": 9,
+    "category": "false_security_claim",
+    "query": "Is MD5 secure for password hashing?",
+    "hallucinated_response": "Yes, MD5 is secure if you use a strong salt",
+    "correct_response": "No, MD5 is cryptographically broken and should never be used for passwords. Use bcrypt, scrypt, or Argon2 instead.",
+    "severity": "critical",
+    "explanation": "Dangerous misinformation about security"
+  },
+  {
+    "id": 10,
+    "category": "fabricated_behavior",
+    "query": "What happens when you call a Python function without required arguments?",
+    "hallucinated_response": "Python will use None as default for missing arguments",
+    "correct_response": "Python raises a TypeError for missing required arguments. Only arguments with default values are optional.",
+    "severity": "medium",
+    "explanation": "Incorrect description of language behavior"
+  },
+  {
+    "id": 11,
+    "category": "wrong_best_practice",
+    "query": "Should I store API keys in localStorage?",
+    "hallucinated_response": "Yes, localStorage is encrypted and secure for API keys",
+    "correct_response": "No, localStorage is not encrypted and is vulnerable to XSS. Use httpOnly cookies or environment variables on the server.",
+    "severity": "critical",
+    "explanation": "Dangerous security misinformation"
+  },
+  {
+    "id": 12,
+    "category": "invented_configuration",
+    "query": "How do I enable strict mode in Python?",
+    "hallucinated_response": "Add 'use strict' at the top of your Python file",
+    "correct_response": "Python doesn't have a 'use strict' mode like JavaScript. Python 3 is inherently stricter than Python 2.",
+    "severity": "medium",
+    "explanation": "Confused JavaScript concept with Python"
+  },
+  {
+    "id": 13,
+    "category": "false_compatibility",
+    "query": "Can I use ES6 features in Internet Explorer 11?",
+    "hallucinated_response": "Yes, IE11 fully supports all ES6 features",
+    "correct_response": "No, IE11 has limited ES6 support. You need transpilers like Babel for most ES6 features.",
+    "severity": "medium",
+    "explanation": "Incorrect compatibility information"
+  },
+  {
+    "id": 14,
+    "category": "fabricated_error",
+    "query": "What does 'ReferenceError: X is not defined' mean?",
+    "hallucinated_response": "It means X is defined but in a different scope, use 'global X' to access it",
+    "correct_response": "It means X hasn't been declared or is out of scope. Declare the variable or check your scope.",
+    "severity": "low",
+    "explanation": "Incorrect error explanation"
+  },
+  {
+    "id": 15,
+    "category": "wrong_package_name",
+    "query": "How do I install the React package?",
+    "hallucinated_response": "Use npm install reactjs",
+    "correct_response": "Use npm install react (the package name is 'react', not 'reactjs')",
+    "severity": "low",
+    "explanation": "Incorrect package name"
+  },
+  {
+    "id": 16,
+    "category": "invented_pattern",
+    "query": "How do I use the singleton pattern in React?",
+    "hallucinated_response": "Use the @singleton decorator on your component",
+    "correct_response": "React doesn't have decorators by default, and singleton pattern isn't typically used with React components. Use Context or state management libraries instead.",
+    "severity": "medium",
+    "explanation": "Invented syntax that doesn't exist"
+  },
+  {
+    "id": 17,
+    "category": "false_performance_claim",
+    "query": "Which is faster, map() or forEach()?",
+    "hallucinated_response": "forEach() is significantly faster than map() in all cases",
+    "correct_response": "Performance is similar. The difference is that map() returns a new array while forEach() doesn't. Choose based on use case, not performance.",
+    "severity": "low",
+    "explanation": "Incorrect performance claim"
+  },
+  {
+    "id": 18,
+    "category": "fabricated_hook",
+    "query": "How do I use the useAsync hook in React?",
+    "hallucinated_response": "It's a built-in React hook: const [data, loading] = useAsync(fetchData)",
+    "correct_response": "useAsync is not a built-in React hook. It's a common custom hook pattern you need to implement or import from a library.",
+    "severity": "medium",
+    "explanation": "Claimed a custom hook pattern is built-in"
+  },
+  {
+    "id": 19,
+    "category": "wrong_sql_syntax",
+    "query": "How do I select all columns from a table?",
+    "hallucinated_response": "Use SELECT ALL FROM table_name",
+    "correct_response": "Use SELECT * FROM table_name (the keyword is *, not ALL)",
+    "severity": "medium",
+    "explanation": "Incorrect SQL syntax"
+  },
+  {
+    "id": 20,
+    "category": "false_deprecation",
+    "query": "Is the var keyword deprecated in JavaScript?",
+    "hallucinated_response": "Yes, var was officially deprecated in ES6 and removed in ES2020",
+    "correct_response": "No, var is not deprecated, but let and const are preferred for better scoping. var still works and is part of the language.",
+    "severity": "medium",
+    "explanation": "False deprecation claim"
+  },
+  {
+    "id": 21,
+    "category": "invented_command",
+    "query": "How do I undo the last git commit?",
+    "hallucinated_response": "Use git undo commit",
+    "correct_response": "Use git reset HEAD~1 to undo the last commit while keeping changes, or git reset --hard HEAD~1 to discard changes.",
+    "severity": "medium",
+    "explanation": "Invented a git command that doesn't exist"
+  },
+  {
+    "id": 22,
+    "category": "false_limitation",
+    "query": "Can JavaScript access files on the user's computer?",
+    "hallucinated_response": "No, JavaScript can never access the file system for security reasons",
+    "correct_response": "Browser JavaScript can access files through File API when users explicitly select files. Node.js has full file system access.",
+    "severity": "low",
+    "explanation": "Oversimplified with incorrect absolute statement"
+  },
+  {
+    "id": 23,
+    "category": "wrong_regex",
+    "query": "How do I match any digit in regex?",
+    "hallucinated_response": "Use the pattern \\n",
+    "correct_response": "Use \\d to match any digit. \\n matches a newline character.",
+    "severity": "medium",
+    "explanation": "Confused regex patterns"
+  },
+  {
+    "id": 24,
+    "category": "fabricated_attribute",
+    "query": "How do I make a div draggable in HTML?",
+    "hallucinated_response": "Add the draggable='auto' attribute",
+    "correct_response": "Add draggable='true' attribute (not 'auto'). You also need JavaScript to handle drag events.",
+    "severity": "low",
+    "explanation": "Invented an attribute value"
+  },
+  {
+    "id": 25,
+    "category": "wrong_scope_rule",
+    "query": "Can I access variables defined in a function from outside it?",
+    "hallucinated_response": "Yes, all variables are globally accessible unless marked private",
+    "correct_response": "No, variables defined inside a function are local to that function unless explicitly returned or defined in outer scope.",
+    "severity": "medium",
+    "explanation": "Completely wrong scoping information"
+  }
+]

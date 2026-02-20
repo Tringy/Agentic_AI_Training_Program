@@ -1,0 +1,18 @@
+# RAG Starter Dependencies
+# Minimal set of dependencies for learning RAG fundamentals
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+
+# Data Validation
+pydantic==2.5.3
+
+# OpenAI API
+openai==1.10.0
+
+# Numerical Computing
+numpy==1.26.3
+
+# Environment Variables
+python-dotenv==1.0.0

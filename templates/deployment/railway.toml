@@ -1,0 +1,37 @@
+# Railway Configuration Template
+# ==============================
+# Copy this file to your project root and customize
+
+[build]
+# Use nixpacks for automatic language detection
+builder = "nixpacks"
+
+# Or specify a Dockerfile
+# builder = "dockerfile"
+# dockerfilePath = "./Dockerfile"
+
+[deploy]
+# Start command for your application
+# For Python FastAPI:
+startCommand = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+
+# For Python Flask:
+# startCommand = "gunicorn main:app --bind 0.0.0.0:$PORT"
+
+# For Node.js:
+# startCommand = "npm start"
+
+# Health check configuration
+healthcheckPath = "/health"
+healthcheckTimeout = 10
+
+# Restart policy
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+# Number of replicas (for scaling)
+numReplicas = 1
+
+# Environment variables (use Railway dashboard for secrets)
+# [env]
+# LOG_LEVEL = "INFO"

@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "code": "def calculate_average(numbers):\n    return sum(numbers) / len(numbers)",
+    "language": "python",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "high",
+        "description": "Division by zero error when empty list is passed",
+        "line": 2,
+        "suggestion": "Add check for empty list before division"
+      },
+      {
+        "type": "missing_validation",
+        "severity": "medium",
+        "description": "No type checking - could fail with non-numeric values",
+        "line": 2,
+        "suggestion": "Add type hints and validate input types"
+      }
+    ],
+    "fixed_code": "def calculate_average(numbers: list[float]) -> float:\n    if not numbers:\n        raise ValueError(\"Cannot calculate average of empty list\")\n    return sum(numbers) / len(numbers)"
+  },
+  {
+    "id": 2,
+    "code": "function fetchUser(userId) {\n  return fetch(`/api/users/${userId}`);\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "missing_error_handling",
+        "severity": "high",
+        "description": "No error handling for failed requests",
+        "line": 2,
+        "suggestion": "Add .catch() or try-catch for error handling"
+      },
+      {
+        "type": "incomplete_response_handling",
+        "severity": "medium",
+        "description": "Returns Response object, not parsed JSON",
+        "line": 2,
+        "suggestion": "Add .then(res => res.json()) to parse response"
+      }
+    ],
+    "fixed_code": "async function fetchUser(userId) {\n  try {\n    const response = await fetch(`/api/users/${userId}`);\n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    return await response.json();\n  } catch (error) {\n    console.error('Failed to fetch user:', error);\n    throw error;\n  }\n}"
+  },
+  {
+    "id": 3,
+    "code": "const API_KEY = 'sk-1234567890abcdef';\nfetch(url, { headers: { 'Authorization': `Bearer ${API_KEY}` } });",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "security",
+        "severity": "critical",
+        "description": "API key hardcoded in source code",
+        "line": 1,
+        "suggestion": "Store API keys in environment variables"
+      },
+      {
+        "type": "security",
+        "severity": "high",
+        "description": "API key exposed in client-side code",
+        "line": 1,
+        "suggestion": "Move API calls to backend to protect keys"
+      }
+    ],
+    "fixed_code": "// Backend code (e.g., server.js)\nconst API_KEY = process.env.API_KEY;\n\n// Frontend makes request to your backend instead\nfetch('/api/proxy-endpoint');"
+  },
+  {
+    "id": 4,
+    "code": "for (var i = 0; i < 5; i++) {\n  setTimeout(() => console.log(i), 1000);\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "medium",
+        "description": "Prints 5 five times instead of 0,1,2,3,4 due to closure over var",
+        "line": 1,
+        "suggestion": "Use let instead of var for block scoping"
+      }
+    ],
+    "fixed_code": "for (let i = 0; i < 5; i++) {\n  setTimeout(() => console.log(i), 1000);\n}"
+  },
+  {
+    "id": 5,
+    "code": "class User:\n    def __init__(self, name):\n        self.name = name\n        self.password = password",
+    "language": "python",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "high",
+        "description": "Parameter 'password' not defined in function signature",
+        "line": 2,
+        "suggestion": "Add password parameter to __init__"
+      },
+      {
+        "type": "security",
+        "severity": "high",
+        "description": "Storing plain text password",
+        "line": 4,
+        "suggestion": "Hash password before storing"
+      }
+    ],
+    "fixed_code": "import bcrypt\n\nclass User:\n    def __init__(self, name: str, password: str):\n        self.name = name\n        self.password_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())"
+  },
+  {
+    "id": 6,
+    "code": "if (user.role == 'admin') {\n  grantFullAccess();\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "style",
+        "severity": "low",
+        "description": "Using == instead of === for comparison",
+        "line": 1,
+        "suggestion": "Use === for strict equality"
+      },
+      {
+        "type": "security",
+        "severity": "high",
+        "description": "No validation that user object exists",
+        "line": 1,
+        "suggestion": "Check if user exists before accessing properties"
+      }
+    ],
+    "fixed_code": "if (user && user.role === 'admin') {\n  grantFullAccess();\n}"
+  },
+  {
+    "id": 7,
+    "code": "def process_data(data):\n    result = []\n    for item in data:\n        result.append(item * 2)\n    return result",
+    "language": "python",
+    "issues": [
+      {
+        "type": "style",
+        "severity": "low",
+        "description": "Can be simplified with list comprehension",
+        "line": 2,
+        "suggestion": "Use list comprehension for more Pythonic code"
+      }
+    ],
+    "fixed_code": "def process_data(data):\n    return [item * 2 for item in data]"
+  },
+  {
+    "id": 8,
+    "code": "try:\n    risky_operation()\nexcept:\n    pass",
+    "language": "python",
+    "issues": [
+      {
+        "type": "bad_practice",
+        "severity": "high",
+        "description": "Bare except catches all exceptions including system exits",
+        "line": 3,
+        "suggestion": "Catch specific exceptions"
+      },
+      {
+        "type": "bad_practice",
+        "severity": "medium",
+        "description": "Silently swallowing errors with pass",
+        "line": 4,
+        "suggestion": "At minimum, log the error"
+      }
+    ],
+    "fixed_code": "try:\n    risky_operation()\nexcept SpecificException as e:\n    logger.error(f'Operation failed: {e}')\n    # Handle appropriately"
+  },
+  {
+    "id": 9,
+    "code": "function Component() {\n  const [data, setData] = useState([]);\n  useEffect(() => {\n    fetch('/api/data').then(res => res.json()).then(setData);\n  });\n  return <div>{data.length}</div>;\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "critical",
+        "description": "useEffect without dependency array causes infinite loop",
+        "line": 3,
+        "suggestion": "Add empty dependency array [] to run only once"
+      },
+      {
+        "type": "missing_error_handling",
+        "severity": "high",
+        "description": "No error handling for fetch",
+        "line": 4,
+        "suggestion": "Add .catch() or try-catch"
+      }
+    ],
+    "fixed_code": "function Component() {\n  const [data, setData] = useState([]);\n  const [error, setError] = useState(null);\n  \n  useEffect(() => {\n    fetch('/api/data')\n      .then(res => res.json())\n      .then(setData)\n      .catch(setError);\n  }, []); // Empty array means run once\n  \n  if (error) return <div>Error: {error.message}</div>;\n  return <div>{data.length}</div>;\n}"
+  },
+  {
+    "id": 10,
+    "code": "SELECT * FROM users WHERE username = '" + userInput + "'",
+    "language": "sql",
+    "issues": [
+      {
+        "type": "security",
+        "severity": "critical",
+        "description": "SQL injection vulnerability",
+        "line": 1,
+        "suggestion": "Use parameterized queries"
+      }
+    ],
+    "fixed_code": "# Python with SQLite\ncursor.execute('SELECT * FROM users WHERE username = ?', (userInput,))\n\n# Node.js with PostgreSQL\nconst query = 'SELECT * FROM users WHERE username = $1';\ndb.query(query, [userInput]);"
+  },
+  {
+    "id": 11,
+    "code": "async function getData() {\n  const result = await fetch('/api/data');\n  console.log(result);\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "medium",
+        "description": "Logging Response object instead of parsed data",
+        "line": 3,
+        "suggestion": "Parse response with .json() before logging"
+      },
+      {
+        "type": "missing_error_handling",
+        "severity": "high",
+        "description": "No error handling for async operation",
+        "line": 2,
+        "suggestion": "Wrap in try-catch"
+      }
+    ],
+    "fixed_code": "async function getData() {\n  try {\n    const response = await fetch('/api/data');\n    const result = await response.json();\n    console.log(result);\n  } catch (error) {\n    console.error('Failed to fetch data:', error);\n  }\n}"
+  },
+  {
+    "id": 12,
+    "code": "def divide(a, b):\n    return a / b\n\nresult = divide(10, 0)",
+    "language": "python",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "high",
+        "description": "No handling for division by zero",
+        "line": 2,
+        "suggestion": "Add check for zero divisor"
+      }
+    ],
+    "fixed_code": "def divide(a: float, b: float) -> float:\n    if b == 0:\n        raise ValueError('Cannot divide by zero')\n    return a / b\n\ntry:\n    result = divide(10, 0)\nexcept ValueError as e:\n    print(f'Error: {e}')"
+  },
+  {
+    "id": 13,
+    "code": "const handleClick = () => {\n  this.setState({ count: this.state.count + 1 });\n  this.setState({ count: this.state.count + 1 });\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "bug",
+        "severity": "medium",
+        "description": "State updates may not be applied correctly due to batching",
+        "line": 2,
+        "suggestion": "Use functional setState for state that depends on previous state"
+      }
+    ],
+    "fixed_code": "const handleClick = () => {\n  this.setState(prevState => ({ count: prevState.count + 1 }));\n  this.setState(prevState => ({ count: prevState.count + 1 }));\n}"
+  },
+  {
+    "id": 14,
+    "code": "import os\nos.system('rm -rf ' + user_directory)",
+    "language": "python",
+    "issues": [
+      {
+        "type": "security",
+        "severity": "critical",
+        "description": "Command injection vulnerability",
+        "line": 2,
+        "suggestion": "Use shutil.rmtree() instead of os.system()"
+      },
+      {
+        "type": "security",
+        "severity": "critical",
+        "description": "Dangerous operation without validation",
+        "line": 2,
+        "suggestion": "Validate and sanitize user_directory path"
+      }
+    ],
+    "fixed_code": "import shutil\nimport os\nfrom pathlib import Path\n\n# Validate path is within allowed directory\nallowed_base = Path('/safe/user/directories')\nuser_path = (allowed_base / user_directory).resolve()\n\nif not str(user_path).startswith(str(allowed_base)):\n    raise ValueError('Invalid directory path')\n\nif user_path.exists():\n    shutil.rmtree(user_path)"
+  },
+  {
+    "id": 15,
+    "code": "function expensiveCalculation(n) {\n  return n * 2;\n}\n\nfunction Component({ value }) {\n  const result = expensiveCalculation(value);\n  return <div>{result}</div>;\n}",
+    "language": "javascript",
+    "issues": [
+      {
+        "type": "performance",
+        "severity": "low",
+        "description": "Function called on every render even when value hasn't changed",
+        "line": 6,
+        "suggestion": "Use useMemo to memoize calculation result"
+      }
+    ],
+    "fixed_code": "function expensiveCalculation(n) {\n  return n * 2;\n}\n\nfunction Component({ value }) {\n  const result = useMemo(() => expensiveCalculation(value), [value]);\n  return <div>{result}</div>;\n}"
+  }
+]

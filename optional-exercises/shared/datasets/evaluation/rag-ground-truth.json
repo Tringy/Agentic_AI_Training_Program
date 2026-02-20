@@ -1,0 +1,191 @@
+[
+  {
+    "question": "How do I implement a simple sorting function in Python?",
+    "expected_answer": "You can implement bubble sort by iterating through the array multiple times, comparing adjacent elements and swapping them if they're in the wrong order. The algorithm continues until no more swaps are needed.",
+    "relevant_files": ["code-samples/python/simple_function.py"],
+    "difficulty": "easy",
+    "tags": ["python", "algorithms", "sorting"]
+  },
+  {
+    "question": "How do you create a bank account class with deposit and withdrawal methods?",
+    "expected_answer": "Create a class with __init__ to set initial balance, a deposit method that adds to the balance after validation, and a withdraw method that checks for sufficient funds before subtracting. Include transaction history tracking.",
+    "relevant_files": ["code-samples/python/class_example.py"],
+    "difficulty": "easy",
+    "tags": ["python", "oop", "classes"]
+  },
+  {
+    "question": "What are the security risks of SQL injection and how do you prevent it?",
+    "expected_answer": "SQL injection occurs when user input is directly concatenated into SQL queries, allowing attackers to execute arbitrary SQL. Prevent it by using parameterized queries or prepared statements instead of string concatenation.",
+    "relevant_files": ["code-samples/python/error_prone.py", "code-samples/javascript/error_prone.js"],
+    "difficulty": "medium",
+    "tags": ["security", "sql", "vulnerabilities"]
+  },
+  {
+    "question": "How do you fetch multiple URLs concurrently in JavaScript?",
+    "expected_answer": "Use Promise.all() with an array of fetch promises to execute multiple HTTP requests concurrently. This is more efficient than sequential fetching. Handle errors appropriately using try-catch or .catch().",
+    "relevant_files": ["code-samples/javascript/async_example.js"],
+    "difficulty": "medium",
+    "tags": ["javascript", "async", "promises"]
+  },
+  {
+    "question": "What is the correct way to use React hooks like useState and useEffect?",
+    "expected_answer": "useState creates state variables in functional components. useEffect runs side effects after render, with optional cleanup. Use dependency arrays to control when effects run. useCallback and useMemo optimize performance by memoizing values.",
+    "relevant_files": ["code-samples/javascript/react_component.jsx"],
+    "difficulty": "medium",
+    "tags": ["react", "hooks", "javascript"]
+  },
+  {
+    "question": "How do you implement retry logic for failed API calls?",
+    "expected_answer": "Wrap the API call in a loop with a maximum retry count. On failure, wait with exponential backoff (increasing delay between retries). Rethrow the error if all retries are exhausted.",
+    "relevant_files": ["code-samples/javascript/async_example.js"],
+    "difficulty": "medium",
+    "tags": ["javascript", "async", "error-handling"]
+  },
+  {
+    "question": "What are the best practices for documenting Python code?",
+    "expected_answer": "Use module-level docstrings, document all public functions with parameters and return types, include type hints, provide usage examples, use clear variable names, and add inline comments for complex logic.",
+    "relevant_files": ["code-samples/python/well_documented.py"],
+    "difficulty": "easy",
+    "tags": ["python", "documentation", "best-practices"]
+  },
+  {
+    "question": "Why should you never use eval() with user input?",
+    "expected_answer": "eval() executes arbitrary code, which is extremely dangerous with user input. Attackers can execute malicious code, access sensitive data, or crash the application. Use safer alternatives like JSON.parse() for data or specific parsers.",
+    "relevant_files": ["code-samples/javascript/error_prone.js"],
+    "difficulty": "medium",
+    "tags": ["security", "javascript", "vulnerabilities"]
+  },
+  {
+    "question": "How do you prevent XSS attacks in web applications?",
+    "expected_answer": "Never insert user input directly into HTML using innerHTML. Use textContent or createTextNode to treat input as text. Sanitize all user input, use Content Security Policy headers, and escape output properly.",
+    "relevant_files": ["code-samples/javascript/error_prone.js"],
+    "difficulty": "medium",
+    "tags": ["security", "xss", "web"]
+  },
+  {
+    "question": "What is the proper way to handle asynchronous operations in Python?",
+    "expected_answer": "Use async/await syntax with asyncio. Define async functions with 'async def', use 'await' for async operations, and use asyncio.gather() for concurrent operations. Use aiohttp for async HTTP requests.",
+    "relevant_files": ["code-samples/python/async_example.py"],
+    "difficulty": "medium",
+    "tags": ["python", "async", "concurrency"]
+  },
+  {
+    "question": "How do you implement inheritance in Python classes?",
+    "expected_answer": "Define a child class with the parent class in parentheses. Use super() to call parent methods. Override methods by defining them in the child class. Child classes inherit all parent attributes and methods.",
+    "relevant_files": ["code-samples/python/class_example.py"],
+    "difficulty": "easy",
+    "tags": ["python", "oop", "inheritance"]
+  },
+  {
+    "question": "What is the secure way to generate random tokens for authentication?",
+    "expected_answer": "Use cryptographically secure random number generators like crypto.randomBytes() in Node.js or secrets module in Python. Never use Math.random() or standard random() for security purposes.",
+    "relevant_files": ["code-samples/javascript/error_prone.js"],
+    "difficulty": "medium",
+    "tags": ["security", "cryptography", "authentication"]
+  },
+  {
+    "question": "How do you prevent command injection vulnerabilities?",
+    "expected_answer": "Never use user input directly in shell commands. Use parameterized APIs instead of shell execution. Validate and sanitize all input. Use language-specific libraries instead of shell commands when possible.",
+    "relevant_files": ["code-samples/python/error_prone.py"],
+    "difficulty": "hard",
+    "tags": ["security", "injection", "vulnerabilities"]
+  },
+  {
+    "question": "What are the benefits of using dataclasses in Python?",
+    "expected_answer": "Dataclasses automatically generate __init__, __repr__, and other special methods. They provide type hints, reduce boilerplate code, support default values, and make code more readable and maintainable.",
+    "relevant_files": ["code-samples/python/well_documented.py"],
+    "difficulty": "medium",
+    "tags": ["python", "dataclasses", "oop"]
+  },
+  {
+    "question": "How do you implement a custom React hook?",
+    "expected_answer": "Create a function starting with 'use' that calls other hooks. Custom hooks can encapsulate reusable stateful logic. Return values or objects that components can use. Hooks must follow React's rules.",
+    "relevant_files": ["code-samples/javascript/react_component.jsx"],
+    "difficulty": "medium",
+    "tags": ["react", "hooks", "javascript"]
+  },
+  {
+    "question": "What is prototype pollution and how do you prevent it?",
+    "expected_answer": "Prototype pollution occurs when attackers modify Object.prototype through unsafe object merging. Prevent it by checking hasOwnProperty(), blacklisting __proto__ and constructor keys, and using Object.create(null) for safe objects.",
+    "relevant_files": ["code-samples/javascript/error_prone.js"],
+    "difficulty": "hard",
+    "tags": ["security", "javascript", "vulnerabilities"]
+  },
+  {
+    "question": "How do you handle errors in async JavaScript functions?",
+    "expected_answer": "Use try-catch blocks around await expressions. Use .catch() for promise chains. Consider creating error boundaries for React. Log errors appropriately and provide user-friendly error messages.",
+    "relevant_files": ["code-samples/javascript/async_example.js"],
+    "difficulty": "medium",
+    "tags": ["javascript", "async", "error-handling"]
+  },
+  {
+    "question": "What are the security risks of storing passwords in localStorage?",
+    "expected_answer": "localStorage is accessible to any JavaScript on the page, making it vulnerable to XSS attacks. Passwords should never be stored client-side. Use httpOnly cookies for session tokens instead.",
+    "relevant_files": ["code-samples/javascript/error_prone.js"],
+    "difficulty": "medium",
+    "tags": ["security", "authentication", "web"]
+  },
+  {
+    "question": "How do you implement timeout functionality for promises?",
+    "expected_answer": "Use Promise.race() with the original promise and a timeout promise that rejects after a delay. This allows cancelling operations that take too long.",
+    "relevant_files": ["code-samples/javascript/async_example.js"],
+    "difficulty": "medium",
+    "tags": ["javascript", "promises", "async"]
+  },
+  {
+    "question": "What is the secure way to handle file paths to prevent path traversal?",
+    "expected_answer": "Validate file paths, use absolute paths, check that resolved paths are within allowed directories, and sanitize user input. Use pathlib in Python or path module in Node.js for safe path handling.",
+    "relevant_files": ["code-samples/python/error_prone.py"],
+    "difficulty": "hard",
+    "tags": ["security", "file-system", "vulnerabilities"]
+  },
+  {
+    "question": "How do you optimize React component re-renders?",
+    "expected_answer": "Use useMemo for expensive computations, useCallback for function references, React.memo for component memoization. Keep state local when possible. Use proper dependency arrays in hooks.",
+    "relevant_files": ["code-samples/javascript/react_component.jsx"],
+    "difficulty": "hard",
+    "tags": ["react", "performance", "optimization"]
+  },
+  {
+    "question": "What are type hints in Python and why use them?",
+    "expected_answer": "Type hints specify expected types for function parameters and return values. They improve code documentation, enable better IDE support, allow static type checking with tools like mypy, and make code more maintainable.",
+    "relevant_files": ["code-samples/python/well_documented.py"],
+    "difficulty": "easy",
+    "tags": ["python", "types", "documentation"]
+  },
+  {
+    "question": "How do you process items in batches asynchronously?",
+    "expected_answer": "Split items into batches, process each batch concurrently using Promise.all(), then move to the next batch. This balances concurrency with resource constraints.",
+    "relevant_files": ["code-samples/javascript/async_example.js"],
+    "difficulty": "hard",
+    "tags": ["javascript", "async", "performance"]
+  },
+  {
+    "question": "Why should credentials never be hardcoded in source code?",
+    "expected_answer": "Hardcoded credentials can be exposed through version control, decompilation, or log files. They can't be rotated without code changes. Use environment variables or secure secret management services instead.",
+    "relevant_files": ["code-samples/python/error_prone.py", "code-samples/javascript/error_prone.js"],
+    "difficulty": "easy",
+    "tags": ["security", "credentials", "best-practices"]
+  },
+  {
+    "question": "How do you implement proper cleanup in React useEffect?",
+    "expected_answer": "Return a cleanup function from useEffect. This runs when the component unmounts or before the effect runs again. Use it to cancel subscriptions, clear timers, or abort fetch requests.",
+    "relevant_files": ["code-samples/javascript/react_component.jsx"],
+    "difficulty": "medium",
+    "tags": ["react", "hooks", "lifecycle"]
+  },
+  {
+    "question": "What is the difference between MD5 and secure password hashing?",
+    "expected_answer": "MD5 is cryptographically broken and fast, making it unsuitable for passwords. Use bcrypt, scrypt, or Argon2 which are designed for passwords with built-in salting and adjustable complexity.",
+    "relevant_files": ["code-samples/python/error_prone.py"],
+    "difficulty": "medium",
+    "tags": ["security", "cryptography", "passwords"]
+  },
+  {
+    "question": "How do you handle race conditions in async operations?",
+    "expected_answer": "Use cancellation flags, abort controllers, or ensure operations check if they're still relevant before applying results. Use proper state management to prevent conflicting updates.",
+    "relevant_files": ["code-samples/javascript/react_component.jsx", "code-samples/python/async_example.py"],
+    "difficulty": "hard",
+    "tags": ["async", "concurrency", "race-conditions"]
+  }
+]

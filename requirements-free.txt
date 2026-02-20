@@ -1,0 +1,100 @@
+# AI Training Program - FREE TIER Dependencies
+# =============================================
+# Install with: pip install -r requirements-free.txt
+# Cost: $0 - All free providers and local tools
+
+# =============================================
+# FREE LLM Providers
+# =============================================
+
+# Google AI Studio - RECOMMENDED (most generous free tier)
+# Signup: https://aistudio.google.com/
+google-generativeai>=0.3.0
+
+# Groq - Fastest free inference
+# Signup: https://console.groq.com/
+groq>=0.4.0
+
+# OpenAI client - Used for Groq and Ollama (OpenAI-compatible APIs)
+openai>=1.12.0
+
+# =============================================
+# FREE Local Embeddings
+# =============================================
+
+# Sentence Transformers - FREE local embeddings
+# No API needed, runs on your machine
+sentence-transformers>=2.3.0
+
+# =============================================
+# Vector Database (FREE)
+# =============================================
+
+# ChromaDB - Local vector database
+chromadb>=0.4.22
+
+# =============================================
+# Web Frameworks
+# =============================================
+
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pydantic>=2.5.3
+pydantic-settings>=2.1.0
+
+# =============================================
+# Data Processing
+# =============================================
+
+numpy>=1.24.0
+pandas>=2.0.0
+
+# =============================================
+# HTTP & Async
+# =============================================
+
+httpx>=0.26.0
+aiohttp>=3.9.0
+aiofiles>=23.2.0
+
+# =============================================
+# Database (SQLite - FREE)
+# =============================================
+
+aiosqlite>=0.19.0
+sqlalchemy>=2.0.0
+
+# =============================================
+# Utilities
+# =============================================
+
+python-dotenv>=1.0.0
+pyyaml>=6.0
+tenacity>=8.2.0
+
+# =============================================
+# Development Tools
+# =============================================
+
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+black>=24.1.0
+ruff>=0.1.0
+
+# =============================================
+# OPTIONAL: Paid Providers (not required)
+# =============================================
+# Uncomment if you want to use paid APIs
+
+# anthropic>=0.18.0  # Claude API (PAID)
+# tiktoken>=0.5.2    # OpenAI token counting (only needed with OpenAI)
+
+# =============================================
+# OPTIONAL: Local Model Support
+# =============================================
+# Ollama doesn't need a pip package - install from https://ollama.ai/
+# Then run: ollama pull llama3.1:8b
+
+# For Hugging Face Transformers (larger local models)
+# transformers>=4.36.0
+# torch>=2.1.0  # Large download, only if needed

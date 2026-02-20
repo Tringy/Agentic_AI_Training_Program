@@ -1,0 +1,33 @@
+{
+  "name": "agentic-ai-training",
+  "version": "1.0.0",
+  "description": "Agentic AI Intensive Training Program - TypeScript Support",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "labs/*/typescript",
+    "templates/typescript-*"
+  ],
+  "scripts": {
+    "setup": "npm install",
+    "setup:labs": "npm --workspaces install",
+    "test": "npm --workspaces run test --if-present",
+    "lint": "npm --workspaces run lint --if-present",
+    "build": "npm --workspaces run build --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "llm",
+    "training",
+    "typescript"
+  ],
+  "license": "MIT"
+}

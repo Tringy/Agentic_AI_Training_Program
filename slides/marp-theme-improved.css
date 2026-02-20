@@ -1,0 +1,249 @@
+/* Improved Marp Theme for Agentic AI Training */
+/* Better contrast, readability, and visual design */
+
+section {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 28px;
+  line-height: 1.6;
+  padding: 60px 80px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  color: #2d3748;
+}
+
+/* Headers */
+h1 {
+  color: #1a365d;
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  border-bottom: 4px solid #3182ce;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  color: #2c5282;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  color: #2d3748;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 0.6em;
+}
+
+/* Code blocks - MUCH better contrast */
+code {
+  background-color: #f7fafc;
+  color: #2d3748;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85em;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', monospace;
+}
+
+pre {
+  background-color: #2d3748 !important;
+  color: #f7fafc !important;
+  padding: 1.2em !important;
+  border-radius: 8px !important;
+  border: 2px solid #4a5568 !important;
+  overflow-x: auto !important;
+  max-height: 450px !important;
+  font-size: 0.75em !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+}
+
+pre code {
+  background-color: transparent !important;
+  color: #f7fafc !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+}
+
+/* Syntax highlighting - better contrast */
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-link {
+  color: #81e6d9 !important;
+}
+
+.hljs-string, .hljs-title, .hljs-name, .hljs-type {
+  color: #90cdf4 !important;
+}
+
+.hljs-attribute, .hljs-symbol, .hljs-bullet, .hljs-addition {
+  color: #9ae6b4 !important;
+}
+
+.hljs-comment, .hljs-quote, .hljs-deletion {
+  color: #a0aec0 !important;
+}
+
+.hljs-number, .hljs-regexp {
+  color: #fbb6ce !important;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 1.5em;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 0.5em;
+  color: #2d3748;
+}
+
+/* Strong emphasis */
+strong {
+  color: #2c5282;
+  font-weight: 700;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.85em;
+}
+
+th {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.8em;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 0.7em;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: white;
+}
+
+tr:nth-child(even) td {
+  background-color: #f7fafc;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #3182ce;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #4a5568;
+  font-style: italic;
+  background-color: #ebf8ff;
+  padding: 1em 1em 1em 1.5em;
+  border-radius: 4px;
+}
+
+/* Lead class for title slides */
+section.lead {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+section.lead h1 {
+  color: white;
+  border-bottom: none;
+  font-size: 3em;
+}
+
+section.lead h2 {
+  color: #e6fffa;
+  font-size: 1.8em;
+}
+
+/* Footer and header */
+header, footer {
+  color: #718096;
+  font-size: 0.7em;
+}
+
+/* Links */
+a {
+  color: #3182ce;
+  text-decoration: none;
+  border-bottom: 1px solid #3182ce;
+}
+
+a:hover {
+  color: #2c5282;
+  border-bottom-color: #2c5282;
+}
+
+/* Two column layout helper */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+}
+
+.columns-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5em;
+}
+
+/* Highlight boxes */
+.highlight {
+  background-color: #fef5e7;
+  border-left: 4px solid #f59e0b;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.success {
+  background-color: #d1fae5;
+  border-left: 4px solid #10b981;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.error {
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+/* Ensure content fits on screen */
+section {
+  overflow: hidden;
+}
+
+/* Better spacing for content */
+section > *:first-child {
+  margin-top: 0;
+}
+
+section > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive font sizing */
+@media (max-width: 1024px) {
+  section {
+    font-size: 24px;
+    padding: 40px 60px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  pre {
+    font-size: 0.7em !important;
+    max-height: 400px !important;
+  }
+}

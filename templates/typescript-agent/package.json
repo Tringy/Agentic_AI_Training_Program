@@ -1,0 +1,35 @@
+{
+  "name": "@agentic-ai/typescript-agent",
+  "version": "1.0.0",
+  "description": "TypeScript Agent Template for Agentic AI Training",
+  "type": "module",
+  "main": "./dist/agent.js",
+  "types": "./dist/agent.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/agent.js",
+      "types": "./dist/agent.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/example.ts",
+    "lint": "eslint src --ext .ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.18.0",
+    "openai": "^4.28.0",
+    "@google/generative-ai": "^0.2.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "vitest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

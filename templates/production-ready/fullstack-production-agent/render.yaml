@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: production-agent
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: false
+      - key: RATE_LIMIT_RPM
+        value: 60
+      - key: RATE_LIMIT_TPM
+        value: 100000
+      - key: ENABLE_BIAS_DETECTION
+        value: true
