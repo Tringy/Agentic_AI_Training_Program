@@ -16,6 +16,7 @@ auto_start_machines = false
 
 [http_service]
 internal_port = 3000
+auto_start_machines = false
 
 [[http_service.checks]]
 grace_period = "5s"
