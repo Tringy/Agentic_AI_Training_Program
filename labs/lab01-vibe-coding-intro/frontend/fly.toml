@@ -12,6 +12,7 @@ NEXT_PUBLIC_API_URL = "https://tringo-ai-lab01-url-shortener-api.fly.dev"
 internal_port = 3000
 processes = ["app"]
 protocol = "tcp"
+auto_start_machines = false
 
 [http_service]
 internal_port = 3000
