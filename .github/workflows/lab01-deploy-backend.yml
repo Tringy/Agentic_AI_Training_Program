@@ -1,0 +1,26 @@
+name: Deploy Lab01 Backend to Fly.io
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'labs/lab01-vibe-coding-intro/backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Fly CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.LAB01_URL_SHORTENER_API_FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only --config fly.toml
+        working-directory: ./labs/lab01-vibe-coding-intro/backend
