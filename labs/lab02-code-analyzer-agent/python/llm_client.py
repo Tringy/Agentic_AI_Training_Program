@@ -1,7 +1,8 @@
 """LLM client abstraction for Code Analyzer."""
+
 import os
 from abc import ABC, abstractmethod
-from typing import List, Dict
+from typing import Dict, List
 
 
 class LLMClient(ABC):
@@ -10,15 +11,19 @@ class LLMClient(ABC):
     @abstractmethod
     def chat(self, messages: List[Dict[str, str]]) -> str:
         """Send messages and return response content."""
-        pass
+        raise NotImplementedError
 
 
 class AnthropicClient(LLMClient):
     """Anthropic Claude client."""
 
     def __init__(self, model: str = "claude-3-5-sonnet-20241022"):
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise ValueError("ANTHROPIC_API_KEY environment variable is required")
         from anthropic import Anthropic
-        self.client = Anthropic()
+
+        self.client = Anthropic(api_key=api_key)
         self.model = model
 
     def chat(self, messages: List[Dict[str, str]]) -> str:
@@ -30,12 +35,7 @@ class AnthropicClient(LLMClient):
             else:
                 filtered.append(m)
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=4096,
-            system=system,
-            messages=filtered
-        )
+        response = self.client.messages.create(model=self.model, max_tokens=4096, system=system, messages=filtered)
         return response.content[0].text
 
 
@@ -43,23 +43,25 @@ class OpenAIClient(LLMClient):
     """OpenAI client."""
 
     def __init__(self, model: str = "gpt-4o"):
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY environment variable is required")
         from openai import OpenAI
-        self.client = OpenAI()
+
+        self.client = OpenAI(api_key=api_key)
         self.model = model
 
     def chat(self, messages: List[Dict[str, str]]) -> str:
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages
-        )
+        response = self.client.chat.completions.create(model=self.model, messages=messages)
         return response.choices[0].message.content
 
 
 class GoogleClient(LLMClient):
     """Google Generative AI client (Gemini)."""
 
-    def __init__(self, model: str = "gemini-1.5-flash"):
+    def __init__(self, model: str = "gemini-2.5-flash-lite"):
         import google.generativeai as genai
+
         api_key = os.getenv("GOOGLE_API_KEY")
         if not api_key:
             raise ValueError("GOOGLE_API_KEY environment variable is required")
@@ -94,6 +96,7 @@ def get_llm_client(provider: str = "anthropic") -> LLMClient:
     }
 
     if provider not in providers:
-        raise ValueError(f"Unknown provider: {provider}. Available: {list(providers.keys())}")
+        available = ", ".join(providers.keys())
+        raise ValueError(f"Unknown provider '{provider}'. Available providers: {available}")
 
     return providers[provider]()

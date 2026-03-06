@@ -1,0 +1,35 @@
+app = "tringo-ai-lab02-code-analyzer-agent-web"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[build.args]
+  NEXT_PUBLIC_API_URL = "https://tringo-ai-lab02-code-analyzer-agent-api.fly.dev"
+
+[env]
+NEXT_PUBLIC_API_URL = "https://tringo-ai-lab02-code-analyzer-agent-api.fly.dev"
+
+[[services]]
+internal_port = 3000
+processes = ["app"]
+protocol = "tcp"
+auto_start_machines = false
+
+[http_service]
+internal_port = 3000
+auto_start_machines = false
+
+[[http_service.checks]]
+grace_period = "5s"
+interval = "30s"
+method = "GET"
+path = "/"
+protocol = "http"
+timeout = "10s"
+type = "http"
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256

@@ -1,0 +1,14 @@
+# Dev-only image — used by docker-compose.override.yml.
+# Installs dependencies and delegates to `npm run dev` via docker-compose command.
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install deps first so they are cached when only source changes.
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Source is bind-mounted at runtime; COPY here is for plain `docker build` fallback.
+COPY . .
+
+EXPOSE 3000
