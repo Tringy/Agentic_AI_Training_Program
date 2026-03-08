@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./python
+    container_name: migration-workflow-api
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=google
+    env_file:
+      - ./python/.env
+    volumes:
+      - ./python:/app
+      - db_data:/data
+    command: >
+      uvicorn main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+      --reload-dir /app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - migration-network
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    container_name: migration-workflow-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      # Polling required on Windows/WSL for file-watch events across bind mounts
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    command: npm run dev
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: on-failure
+
+networks:
+  migration-network:
+    driver: bridge
+
+volumes:
+  frontend_node_modules:
+  db_data:
