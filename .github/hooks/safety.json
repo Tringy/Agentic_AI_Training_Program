@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "python .github/hooks/check-destructive.py",
+        "windows": "python .github\\hooks\\check-destructive.py",
+        "timeout": 5
+      }
+    ]
+  }
+}
