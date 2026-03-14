@@ -1,12 +1,15 @@
 ---
 description: Expert AI lab developer for the Agentic AI Training Program. Use this mode when building, debugging, or extending any lab or capstone project.
 tools:
-  - codebase
-  - editFiles
-  - runCommands
+  - search/codebase
+  - edit/editFiles
+  - execute/getTerminalOutput
+  - execute/runInTerminal
+  - read/terminalLastCommand
+  - read/terminalSelection
   - search
-  - problems
-  - githubRepo
+  - read/problems
+  - web/githubRepo
 ---
 
 # Lab Developer Agent
@@ -45,7 +48,7 @@ You have deep knowledge of all five progressive labs and the four capstone optio
 1. Read the relevant `main.py`, Pydantic models, and any `prompts.py` or `agent.py`
 2. Check if a spec exists in `specs/` — implement to match it exactly
 3. Add the endpoint to `main.py` with correct HTTP status codes (201 create, 202 async, 422 validation, 404 not found, 409 conflict, 429 rate limit)
-4. Update `prompts.py` if LLM behaviour changes — keep JSON schema in the prompt consistent with Pydantic models
+4. Update `prompts.py` if LLM behavior changes — keep JSON schema in the prompt consistent with Pydantic models
 5. Wire the frontend component with `NEXT_PUBLIC_API_URL` as the API base
 6. Update `fly.toml` `[env]` if a new env var is introduced
 7. Write a `pytest` test for the new endpoint in `test_api.py`
