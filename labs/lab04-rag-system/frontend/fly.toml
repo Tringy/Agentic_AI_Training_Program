@@ -10,17 +10,24 @@ primary_region = "iad"
 [env]
   NEXT_PUBLIC_API_URL = "https://tringo-ai-lab04-rag-system-api.fly.dev"
 
-[http_service]
-  internal_port = 3000
-  auto_start_machines = false
+[[services]]
+internal_port = 3000
+processes = ["app"]
+protocol = "tcp"
+auto_start_machines = false
 
-  [[http_service.checks]]
-    grace_period = "5s"
-    interval = "30s"
-    method = "GET"
-    path = "/"
-    protocol = "http"
-    timeout = "10s"
+[http_service]
+internal_port = 3000
+auto_start_machines = false
+
+[[http_service.checks]]
+grace_period = "5s"
+interval = "30s"
+method = "GET"
+path = "/"
+protocol = "http"
+timeout = "10s"
+type = "http"
 
 [[vm]]
   cpu_kind = "shared"
