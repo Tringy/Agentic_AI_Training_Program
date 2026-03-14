@@ -1,0 +1,47 @@
+name: Deploy Lab05 Backend to Fly.io
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'labs/lab05-multi-agent/python/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: ./labs/lab05-multi-agent/python
+
+      - name: Run tests
+        run: python -m pytest test_api.py -v
+        working-directory: ./labs/lab05-multi-agent/python
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Fly CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.LAB05_MULTI_AGENT_API_FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only --config fly.toml
+        working-directory: ./labs/lab05-multi-agent/python

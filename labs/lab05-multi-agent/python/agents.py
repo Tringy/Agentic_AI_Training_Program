@@ -1,5 +1,15 @@
 """Worker agents for the multi-agent system."""
 
+from dataclasses import dataclass
+
+
+@dataclass
+class AgentTraceEntry:
+    agent: str
+    parallel_group: int
+    duration_ms: int
+
+
 RESEARCHER_PROMPT = """You are a research specialist.
 Your job is to gather and summarize information on a given topic.
 
@@ -48,10 +58,7 @@ class WorkerAgent:
         if context:
             user_prompt = f"Context:\n{context}\n\nTask:\n{task}"
 
-        response = self.llm.chat([
-            {"role": "system", "content": self.system_prompt},
-            {"role": "user", "content": user_prompt}
-        ])
+        response = self.llm.chat([{"role": "system", "content": self.system_prompt}, {"role": "user", "content": user_prompt}])
 
         return response
 
