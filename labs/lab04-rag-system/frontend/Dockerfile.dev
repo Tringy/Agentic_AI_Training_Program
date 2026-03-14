@@ -1,0 +1,11 @@
+# Dev-only image — used by docker-compose for hot-reload development.
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY . .
+
+EXPOSE 3000

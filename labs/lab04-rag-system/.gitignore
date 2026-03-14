@@ -1,0 +1,17 @@
+# ChromaDB local data
+chroma_db/
+**/chroma_db/
+
+# Repo registry (written at runtime into CHROMA_DB_PATH)
+repos.json
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+*.egg-info/
+.venv/
+venv/
+
+# Temp git clones from /index/github
+/tmp/

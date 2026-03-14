@@ -1,0 +1,40 @@
+app = "tringo-ai-lab04-rag-system-api"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  LLM_PROVIDER = "openai"
+  CHROMA_DB_PATH = "/data/chroma_db"
+
+[mounts]
+  source = "chroma_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8000
+  auto_start_machines = false
+  auto_stop_machines = true
+
+  [[http_service.checks]]
+    grace_period = "5s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    protocol = "http"
+    timeout = "10s"
+
+[checks.http_service]
+grace_period = "5s"
+interval = "30s"
+method = "GET"
+path = "/health"
+protocol = "http"
+timeout = "10s"
+type = "http"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512

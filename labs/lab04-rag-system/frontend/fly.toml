@@ -1,0 +1,29 @@
+app = "tringo-ai-lab04-rag-system-web"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[build.args]
+  NEXT_PUBLIC_API_URL = "https://tringo-ai-lab04-rag-system-api.fly.dev"
+
+[env]
+  NEXT_PUBLIC_API_URL = "https://tringo-ai-lab04-rag-system-api.fly.dev"
+
+[http_service]
+  internal_port = 3000
+  auto_start_machines = false
+  auto_stop_machines = true
+
+  [[http_service.checks]]
+    grace_period = "5s"
+    interval = "30s"
+    method = "GET"
+    path = "/"
+    protocol = "http"
+    timeout = "10s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
