@@ -218,7 +218,7 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-goal-yellow mb-6">
               Agent Workflow Timeline
             </h3>
-            <AgentTimeline history={reviewResult.conversation_history} />
+            <AgentTimeline history={reviewResult?.conversation_history ?? []} />
           </div>
 
           {/* Follow-up Questions Section */}
