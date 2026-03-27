@@ -1,6 +1,6 @@
 # Capstone Project Options
 
-Choose one of the four capstone projects below. Each includes starter code, requirements, and evaluation criteria.
+Choose one of the five capstone projects below. Each includes starter code, requirements, and evaluation criteria.
 
 ## Option Overview
 
@@ -10,6 +10,7 @@ Choose one of the four capstone projects below. Each includes starter code, requ
 | **B** | Legacy Code Documenter | Medium-High | Agents, code analysis |
 | **C** | Tech Debt Analyzer | High | RAG, evaluation |
 | **D** | Multi-Agent Research Assistant | High | Multi-agent, orchestration |
+| **E** | Football Game Review | High | Multi-agent, sports analysis, domain reasoning |
 
 ---
 
@@ -66,6 +67,21 @@ Build an orchestrated multi-agent system for technical research tasks.
 - Report generation
 
 **Directory**: `option-d-research-assistant/`
+
+---
+
+## Option E: Football Game Review
+
+Build a sophisticated multi-agent coaching system for analyzing and reviewing football matches from multiple expert perspectives.
+
+**Features:**
+- Four specialized agents (Journalist, Coach, AssistantCoach, Fan)
+- Comprehensive game analysis from tactical, journalistic, and emotional angles
+- Team composition and strategy insights
+- Key moment identification and analysis
+- Structured coaching synthesis
+
+**Directory**: `option-e-football-review/`
 
 ---
 
