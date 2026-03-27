@@ -29,3 +29,7 @@ Thumbs.db
 # Testing
 .nyc_output/
 coverage/
+
+# Keep frontend utility code tracked despite root-level lib/ ignore
+!lib/
+!lib/**
