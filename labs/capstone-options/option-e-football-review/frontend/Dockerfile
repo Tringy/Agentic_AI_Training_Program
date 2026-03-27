@@ -1,30 +1,36 @@
-FROM node:20-alpine AS base
-
+FROM node:20-alpine AS deps
 WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production
 
-# Copy package files
+FROM node:20-alpine AS builder
+WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci
-
-# Copy source
 COPY . .
 
-# Build Next.js
+RUN mkdir -p /app/public
+
+ARG NEXT_PUBLIC_API_URL=http://localhost:8000
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 RUN npm run build
-RUN npm prune --production
 
-# Production stage
-FROM node:20-alpine
-
+FROM node:20-alpine AS runner
 WORKDIR /app
 
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/.next ./.next
-COPY --from=base /app/package.json ./package.json
-COPY --from=base /app/public ./public
+ENV NODE_ENV=production
+
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+USER nextjs
 
 EXPOSE 3000
+ENV PORT=3000
 
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
-
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
